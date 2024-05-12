@@ -1,4 +1,9 @@
 # iroshan
+
+docker container run --rm --net dude alpine nslookup search
+
+
+
 ## --net == --network
 dn create app
 dc run -d --name nginx1 --net app --net-alias nginx nginx
