@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:latest
 
 # Skip anytype of prompts
 # ARG DEBIAN_FRONTEND=noninteractive
