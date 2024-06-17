@@ -7,13 +7,26 @@ services:
     image: drupal:latest
     ports:
       - '8080:80' # port is running on 80
-    volumes:
-      - drupal:/var/www/html
+    volumes: # in the document it's recommended to use 4 volumes
+      - drupal-modules:/var/www/html/modules
+      - drupal-sites:/var/www/html/sites
+      - drupal-modules:/var/www/html/modules
+      - drupal-themes:/var/www/html/themes
   
   postgres:
     image: postgres:latest
     environment: # can use environment or -env to pass the env variables
       - POSTGRES_PASSWORD=mypasswd
 
+# if you are assigning named volumes, need to create them before.
+
 volumes: # need to create the volumes
-  drupal:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
+
+# when connecting to drupal need to specify the hostname in advanced connection
+
+# need to remove volumes when docker-compose down.
+# docker-compose down -v
