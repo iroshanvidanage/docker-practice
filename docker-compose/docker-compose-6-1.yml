@@ -1,0 +1,10 @@
+# iroshan vidanage
+# assignment docker-compose
+
+services:
+  nginx1:
+    image: nginx:latest
+    ports:
+      - '80:80'
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
