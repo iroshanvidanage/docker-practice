@@ -2,9 +2,16 @@
 # assignment docker-compose
 
 services:
-  nginx1:
+  nginx1: # first nginx
     image: nginx:latest
-    ports:
-      - '80:80'
+    # ports:
+    #   - '80:80'
     volumes:
       - ./index.html:/usr/share/nginx/html/index.html
+  
+  nginx2: # second nginx
+    image: nginx:latest
+    ports:
+      - '80:80' # expose to out
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf # map the secondary to get the data from the first nginx
