@@ -1,6 +1,6 @@
 # iroshan
 
-version: '3.8'
+# version: '3.8' This is obselete
 services:
   mongodb:
     image:  mongo:latest
