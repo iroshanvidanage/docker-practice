@@ -1,0 +1,17 @@
+# iroshan vidanage
+# example docker-compose 2
+
+services:
+  proxy:
+    build:
+      context: . # path to Dockerfile & other contents
+      dockerfile: nginx.Dockerfile # Dockerfile to be used to build the custom image
+    image: nginx-custom # image name we are assigning
+    ports:
+      - '80:80'
+  
+  web:
+    image: nginx:latest
+    volumes:
+    - ./index.html:/usr/share/nginx/html/index.html
+    
