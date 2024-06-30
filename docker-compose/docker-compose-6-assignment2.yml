@@ -1,0 +1,34 @@
+# iroshan vidanage
+# assignment 2 docker-compose drupal
+
+services:
+
+  drupal:
+    build:
+      context: .
+      dockerfile: drupal.Dockerfile # drupal service
+    image: custom-drupal
+    ports:
+      - '8080:80' # port is running on 80
+    volumes: # in the document it's recommended to use 4 volumes
+      - drupal-modules:/var/www/html/modules
+      - drupal-sites:/var/www/html/sites
+      - drupal-modules:/var/www/html/modules
+      - drupal-themes:/var/www/html/themes
+  
+  postgres:
+    image: postgres:latest
+    environment: # can use environment or -env to pass the env variables
+      - POSTGRES_PASSWORD=mypasswd
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+
+
+
+# need to create the volumes
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
+  drupal-data:
