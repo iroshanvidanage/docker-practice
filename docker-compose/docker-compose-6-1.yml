@@ -1,5 +1,5 @@
 # iroshan vidanage
-# assignment docker-compose
+# exercise 1 docker-compose 
 
 services:
   nginx1: # first nginx

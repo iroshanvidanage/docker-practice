@@ -1,5 +1,5 @@
 # iroshan vidanage
-# example docker-compose 2
+# example 2 docker-compose
 
 services:
   proxy:
@@ -7,6 +7,7 @@ services:
       context: . # path to Dockerfile & other contents
       dockerfile: nginx.Dockerfile # Dockerfile to be used to build the custom image
     image: nginx-custom # image name we are assigning
+    # if not there will be a default name attached
     ports:
       - '80:80'
   
