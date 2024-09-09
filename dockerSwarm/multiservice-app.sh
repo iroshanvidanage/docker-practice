@@ -19,3 +19,11 @@ docker service create --name result --network backend -p 8000:80 bretfisher/exam
 docker service create --name redis --network frontend redis:3.2
 
 docker service create --name vote --network frontend -p 80:80 --replicas 3 bretfisher/examplevotingapp_vote
+
+# check the services
+docker service ls
+docker service ps db
+docker service ps redis
+docker service ps worker
+docker service ps result
+docker service ps vote
