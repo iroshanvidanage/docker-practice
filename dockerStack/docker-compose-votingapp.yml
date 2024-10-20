@@ -1,0 +1,43 @@
+# same architecture as dockerSwarm/multi-service-app
+
+networks:
+    frontend:
+    backend:
+
+volumes:
+    db-data:
+
+service:
+    db:
+        image: postgres:9.4
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        networks:
+            - backend
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+    
+    worker:
+        image: bretfisher/examplevotingapp_worker
+        networks:
+            - backend
+            - frontend
+    
+    result:
+        image: bretfisher/examplevotingapp_result
+        networks:
+            - backend
+        ports: 8000:80
+
+    redis:
+        image: redis:3.2
+        networks:
+            - frontend
+    
+    vote:
+        image: bretfisher/examplevotingapp_vote
+        networks:
+            - frontend
+        ports: 80:80
+        deploy:
+            replicas: 3
